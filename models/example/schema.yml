@@ -1,21 +1,32 @@
-
 version: 2
 
 models:
-    - name: my_first_dbt_model
-      description: "A starter dbt model"
+    - name: major
+      description: "People age and major indicative"
       columns:
           - name: id
-            description: "The primary key for this table"
+            description: "primary key for the table"
             tests:
                 - unique
                 - not_null
-
-    - name: my_second_dbt_model
-      description: "A starter dbt model"
-      columns:
-          - name: id
-            description: "The primary key for this table"
+          - name: name
+            description: "person's name"
             tests:
-                - unique
+                - not_null
+          - name: age
+            description: "person's age"
+            tests:
+                - not_null
+    - name: major_count
+      description: "amount of people for each major status"
+      columns:
+          - name: major
+            description: "major status"
+            tests:
+              - accepted_values:
+                  values: [true, false]
+                  quote: false
+          - name: major
+            description: "amount of people"
+            tests:
                 - not_null
